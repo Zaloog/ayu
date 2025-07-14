@@ -1,3 +1,6 @@
+# 0.4.2
+- Fix NoMatches Error after textual v4.0.0 Update
+
 # 0.4.1
 - Fix Tooltip for Filewatcher-Button, to show correct path if `self.test_path` is `None`
 i.e. `ayu` is run without any arguments
