@@ -1,6 +1,6 @@
 [project]
 name = "ayu"
-version = "0.4.2"
+version = "0.4.3"
 description = "An interactive TUI for pytest"
 readme = "README.md"
 authors = [
@@ -9,13 +9,13 @@ authors = [
 requires-python = ">=3.10"
 dependencies = [
     "pytest>=8.3.5",
-    "textual[syntax]<=4.0.0",
     "textual-slidecontainer>=0.2.5",
     "websockets>=15.0.1",
     "click>=8.1.8",
     "textual-tags>=0.1.0",
     "requests-cache>=1.2.1",
     "watchfiles>=1.0.5",
+    "textual[syntax]>=5.2.0",
 ]
 
 keywords = ["python", "textual", "tui", "pytest"]

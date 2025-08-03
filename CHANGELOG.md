@@ -1,3 +1,6 @@
+# 0.4.3
+- Upgrade dependencies to next major textual
+
 # 0.4.2
 - Fix NoMatches Error after textual v4.0.0 Update
 
