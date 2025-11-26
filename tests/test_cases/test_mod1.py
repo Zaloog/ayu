@@ -1,7 +1,9 @@
 import pytest
+from warnings import warn
 
 
 def test_sum():
+    warn("warning")
     assert 1 + 1 == 2
 
 

@@ -289,7 +289,7 @@ def build_plugin_dict(conf: Config) -> dict:
         plugin_dict = {}
         plugin_group = conf._parser.getgroup(clean_name)
         group_name = plugin_group.name
-        group_description = plugin_group.description
+        group_description = getattr(plugin_group, "description", "No Description")
         group_options = plugin_group.options
         if not group_options:
             continue

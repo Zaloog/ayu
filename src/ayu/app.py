@@ -190,13 +190,9 @@ class AyuApp(App):
         self.markers = data["meta"]["markers"]
 
     def update_plugin_dict(self, data):
-        # if not self.plugin_dict:
         self.plugin_option_dict = data["plugin_dict"]
-        # self.notify(f"{self.plugin_option_dict.keys()}", markup=False)
 
     def update_selected_options(self, data):
-        # if not self.plugin_dict:
-        # if not self.selected_options_dict:
         self.selected_options_dict.update(data["option_dict"])
 
     # Get initial Data

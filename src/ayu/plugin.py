@@ -2,7 +2,7 @@ import os
 import asyncio
 import pytest
 from pytest import Config, TestReport, Session, Parser
-from _pytest.terminal import TerminalReporter
+from _pytest.terminal import TerminalReporter, WarningReport
 
 from ayu.event_dispatcher import send_event, check_connection
 from ayu.classes.event import Event
@@ -185,16 +185,17 @@ class Ayu:
                 )
 
         report_dict = {}
-        # warning report has no report.when
         for outcome, reports in terminalreporter.stats.items():
             # raise Exception(terminalreporter.stats.keys())
             if outcome in ["", "deselected"]:
                 continue
             for report in reports:
+                # Skip WarningReports
+                if isinstance(report, WarningReport):
+                    continue
+
                 report_dict[report.nodeid] = {
                     "nodeid": report.nodeid,
-                    # Not in warning report
-                    # TODO Handle warning reports
                     "when": report.when,
                     "caplog": report.caplog,
                     "longreprtext": remove_ansi_escapes(report.longreprtext),
