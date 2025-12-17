@@ -1,7 +1,9 @@
-# 0.4.3
+# 0.4.5
+- Updated Dependencies
+
+# 0.4.4
 - Fix WarningReport missing attribure error
 - Fix PlugIn not displayed Error
-- Updated Dependencies
 
 # 0.4.3
 - Upgrade dependencies to next major textual
