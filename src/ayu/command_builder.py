@@ -1,7 +1,7 @@
 from pathlib import Path
 from dataclasses import dataclass
 
-from ayu.utils import ayu_is_run_as_tool
+from ayu.utils import ayu_is_run_as_tool, project_is_uv_managed
 
 
 @dataclass
@@ -19,19 +19,20 @@ def build_command(
 ) -> str:
     command_parts = []
 
-    # is ayu installed in the current project or run as tool
-    is_tool = ayu_is_run_as_tool()
+    if project_is_uv_managed():
+        # is ayu installed in the current project or run as tool
+        is_tool = ayu_is_run_as_tool()
 
-    # install ayu on the fly, if ayu is not installed in the project itself
-    substring_uv = "uv run --with ayu" if is_tool else "uv run"
-    command_parts.append(substring_uv)
+        # install ayu on the fly, if ayu is not installed in the project itself
+        substring_uv = "uv run --with ayu" if is_tool else "uv run"
+        command_parts.append(substring_uv)
 
-    # if plugins are declared with options, but are not installed in the project install them on the fly
-    if plugins:
-        substring_plugins_to_install = " ".join(
-            [f"--with {plugin.name}" for plugin in plugins if not plugin.is_installed]
-        )
-        command_parts.append(substring_plugins_to_install)
+        # if plugins are declared with options, but are not installed in the project install them on the fly
+        if plugins:
+            substring_plugins_to_install = " ".join(
+                [f"--with {plugin.name}" for plugin in plugins if not plugin.is_installed]
+            )
+            command_parts.append(substring_plugins_to_install)
 
     # pytest call here
     command_parts.append("pytest")

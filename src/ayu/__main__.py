@@ -1,6 +1,6 @@
 from pathlib import Path
+import time
 import click
-
 from ayu.app import AyuApp
 from ayu.utils import uv_is_installed, project_is_uv_managed, ayu_is_run_as_tool
 
@@ -22,12 +22,13 @@ def cli(ctx, tests_path):
         print("ayu as dependency")
     # return
     if not uv_is_installed():
-        print("uv_not_installed, please install uv to use ayu")
-        return
+        print("uv is not installed")
+        print("THIS IS NOT SUPPORTED!")
+        time.sleep(2)
     if not project_is_uv_managed():
-        print("Your project is not a valid python project")
-        print("no pyproject.toml file detected")
-        return
+        print("Your project is not managed by uv")
+        print("THIS IS NOT SUPPORTED!")
+        time.sleep(2)
 
     if tests_path:
         app = AyuApp(test_path=tests_path)

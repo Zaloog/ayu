@@ -137,8 +137,10 @@ def uv_is_installed():
 
 
 def project_is_uv_managed():
-    toml_path = Path.cwd() / "pyproject.toml"
-    return toml_path.exists()
+    result = subprocess.run(
+        "uv lock --check-exists".split(), capture_output=True
+    )
+    return result.returncode == 0
 
 
 def ayu_is_run_as_tool():
