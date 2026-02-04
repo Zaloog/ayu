@@ -1,3 +1,6 @@
+# 0.5.0
+- Make ayu useable without uv (not all functionality supported)
+
 # 0.4.5
 - Updated Dependencies
 

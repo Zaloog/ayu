@@ -52,7 +52,7 @@ AYU_PORT=1337
 
 # Requirements & Usage
 ## Requirements
-ayu needs your project to be uv-managed and you need your tests be discoverable by pytest.
+ayu needs your tests be discoverable by pytest. It works best when your project is managed by uv. Using it without uv may work, but is not supported.
 
 ## Usage
 To discover all your tests under `tests`
