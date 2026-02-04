@@ -1,6 +1,7 @@
 from pathlib import Path
-import time
+
 import click
+
 from ayu.app import AyuApp
 from ayu.utils import uv_is_installed, project_is_uv_managed, ayu_is_run_as_tool
 
@@ -23,12 +24,10 @@ def cli(ctx, tests_path):
     # return
     if not uv_is_installed():
         print("uv is not installed")
-        print("THIS IS NOT SUPPORTED!")
-        time.sleep(2)
+        print("THIS IS NOT FULLY SUPPORTED!")
     if not project_is_uv_managed():
         print("Your project is not managed by uv")
-        print("THIS IS NOT SUPPORTED!")
-        time.sleep(2)
+        print("THIS IS NOT FULLY SUPPORTED!")
 
     if tests_path:
         app = AyuApp(test_path=tests_path)
