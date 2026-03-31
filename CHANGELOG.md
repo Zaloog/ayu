@@ -1,3 +1,6 @@
+# 0.5.1
+- Update dependencies to fix security vulnerability
+
 # 0.5.0
 - Make ayu useable without uv (not all functionality supported)
 
