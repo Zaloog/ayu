@@ -1,6 +1,6 @@
 [project]
 name = "ayu"
-version = "0.5.1"
+version = "0.5.2"
 description = "An interactive TUI for pytest"
 readme = "README.md"
 authors = [

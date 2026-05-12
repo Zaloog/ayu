@@ -1,3 +1,6 @@
+# 0.5.2
+- Update dependencies to fix security vulnerability
+
 # 0.5.1
 - Update dependencies to fix security vulnerability
 
