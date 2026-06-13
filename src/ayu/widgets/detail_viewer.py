@@ -33,6 +33,13 @@ class DetailView(SlideContainer):
         yield ToggleRule(target_widget_id="textarea_test_result_details")
         yield TestResultDetails(id="textarea_test_result_details")
 
+    def toggle(self) -> None:
+        if not self.state:
+            self.display = True
+            self.call_after_refresh(self.open)
+        else:
+            self.close()
+
     def watch_file_path_to_preview(self):
         self.border_title = self.file_path_to_preview.as_posix()
 
