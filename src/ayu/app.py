@@ -66,7 +66,7 @@ class AyuApp(App):
     test_results_ready: reactive[bool] = reactive(False, init=False)
     tests_running: reactive[bool] = reactive(False, init=False)
     file_watcher: reactive[bool] = reactive(False, init=False)
-    markers: reactive[list[str]] = reactive(list)
+    markers: reactive[list[str]] = reactive([])
     DEV: bool = False
     """Show The Log Collapsibles"""
 
@@ -228,11 +228,14 @@ class AyuApp(App):
         self.notify(
             f"Websocket Started at\n[orange]{self.host}:{self.port}[/]", timeout=1
         )
+        self.set_timer(1.0, self.refresh)
         try:
             await self.dispatcher.start()
         except OSError as e:
             self.log.error(e)
             pass
+        finally:
+            self.refresh()
 
     def on_key(self, event: Key):
         if event.key == "w":
@@ -324,6 +327,7 @@ class AyuApp(App):
     def action_show_details(self):
         self.query_one(DetailView).toggle()
         self.query_one(TreeFilter).toggle()
+        self.query_one(TreeFilter).refresh()
 
     def action_open_log(self):
         self.query_one(LogViewer).display = not self.query_one(LogViewer).display

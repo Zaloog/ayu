@@ -11,7 +11,7 @@ from textual_tags import Tags, Tag, TagInput
 
 class TreeFilter(SlideContainer):
     test_results_ready: reactive[bool] = reactive(False, init=False)
-    markers: reactive[list[str]] = reactive([])
+    markers: reactive[list[str]] = reactive([], init=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(
@@ -22,6 +22,13 @@ class TreeFilter(SlideContainer):
             *args,
             **kwargs,
         )
+
+    def toggle(self) -> None:
+        if not self.state:
+            self.display = True
+            self.call_after_refresh(self.open)
+        else:
+            self.close()
 
     def compose(self):
         yield MarkersFilter(tag_values=self.markers, show_x=True).data_bind(

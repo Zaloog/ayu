@@ -1,3 +1,6 @@
+# 0.5.3
+- Fix issues with opening Slidecontainers for Details
+
 # 0.5.2
 - Update dependencies to fix security vulnerability
 
